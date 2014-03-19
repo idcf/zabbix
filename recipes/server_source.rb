@@ -36,7 +36,8 @@ when "redhat","centos","scientific","amazon","oracle"
   init_template = 'zabbix_server.init-rh.erb'
 end
 
-configure_options = (node['zabbix']['server']['configure_options'] || Array.new).delete_if do |option|
+configure_options = node['zabbix']['server']['configure_options'] ? [] + node['zabbix']['server']['configure_options'] : Array.new
+configure_options = configure_options.delete_if do |option|
   option.match(/\s*--prefix(\s|=).+/)
 end
 node.set['zabbix']['server']['configure_options'] = configure_options
