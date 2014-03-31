@@ -50,7 +50,8 @@ service "zabbix_agentd" do
 end
 
 # --prefix is controlled by install_dir
-configure_options = (node['zabbix']['agent']['configure_options'] || Array.new).delete_if do |option|
+configure_options = node['zabbix']['agent']['configure_options'].dup
+configure_options = (configure_options || Array.new).delete_if do |option|
   option.match(/\s*--prefix(\s|=).+/)
 end
 node.set['zabbix']['agent']['configure_options'] = configure_options
