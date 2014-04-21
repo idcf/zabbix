@@ -10,3 +10,4 @@ Server=<%= node.zabbix.agent.servers.join(',') %>
 ServerActive=<%= node.zabbix.agent.servers_active.join(',') %>
 <% end -%>
 StartAgents=4
+AllowRoot=<%= node.zabbix.agent.allow_root ? "1" : "0" %>
