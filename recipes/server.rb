@@ -12,5 +12,10 @@ if node['zabbix']['server']['install']
 end
 
 if node['zabbix']['web']['install']
+  %w(vlgothic-p-fonts dejavu-sans-fonts).each do |pkg|
+    package pkg do
+      action :install
+    end
+  end
   include_recipe "zabbix::web"
 end
