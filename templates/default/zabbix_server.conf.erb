@@ -3,6 +3,7 @@
 ############ GENERAL PARAMETERS #################
 
 LogFile=<%= node['zabbix']['log_dir'] %>/zabbix_server.log
+LogFileSize=<%= node['zabbix']['server']['log_file_size'] %>
 <% case node['zabbix']['server']['db_install_method'] %>
 <% when "mysql" %>
 DBHost=<%= node['zabbix']['server']['dbhost'] %>
